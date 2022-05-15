@@ -108,7 +108,7 @@ WITH PopvsVac (continent, location, date, population, new_vaccinations, rolling_
 AS
 (
 SELECT dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
-, SUM(CAST(vac.new_vaccinations AS BIGINT)) OVER (Partition by dea.location ORDER BY dea.location, dea.Date) AS rolling_people_vaccinated
+, SUM(CAST(vac.new_vaccinations AS BIGINT)) OVER (PARTITION BY dea.location ORDER BY dea.location, dea.Date) AS rolling_people_vaccinated
 --, (rolling_people_vaccinated/population)*100
 FROM PortfolioProject..CovidDeaths AS dea
 JOIN PortfolioProject..CovidVaccinations AS vac

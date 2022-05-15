@@ -5,7 +5,7 @@ ORDER BY 3,4;
 
 
 
---Select the Data we are going to be using.
+-- Select the Data we are going to be using.
 
 SELECT location, date, total_cases, new_cases, total_deaths, population
 FROM PortfolioProject..CovidDeaths
@@ -14,7 +14,7 @@ ORDER BY 1,2;
 
 
 
---Total Cases vs. Total Deaths in our country - United States.
+-- Total Cases vs. Total Deaths in our country - United States.
 -- Shows the percentage rate of dying if you get infected with Covid-19 in United States.
 
 SELECT location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 AS death_percentage
@@ -25,7 +25,7 @@ ORDER BY 1,2;
 
 
 
---Total Cases vs. Population in our country - United States.
+-- Total Cases vs. Population in our country - United States.
 -- Shows the percentage of population who got Covid-19.
 
 SELECT location, date, population, total_cases, (total_cases/population)*100 AS percentage_infected_population
@@ -35,7 +35,7 @@ ORDER BY 1,2;
 
 
 
---Which country has the Highest Infection Rate compared to Population.
+-- Which country has the Highest Infection Rate compared to Population.
 
 SELECT location, population, MAX(total_cases) AS highest_infection_count, MAX(total_cases/population)*100 AS percentage_infected_population
 FROM PortfolioProject..CovidDeaths
@@ -46,7 +46,7 @@ ORDER BY percentage_infected_population DESC;
 
 
 
---Total deaths by Country.
+-- Total deaths by Country.
 
 SELECT location, MAX(CAST(total_deaths AS INT)) AS total_death_count
 FROM PortfolioProject..CovidDeaths
@@ -57,7 +57,7 @@ ORDER BY total_death_count DESC;
 
 
 
---Total deaths by Continent.
+-- Total deaths by Continent.
 -- Showing contintents with the highest death count per population.
 
 SELECT location, MAX(CAST(total_deaths AS INT)) AS total_death_count
@@ -69,7 +69,7 @@ ORDER BY total_death_count DESC;
 
 
 
---Global numbers.
+-- Global numbers.
 
 SELECT SUM(new_cases) AS total_cases, SUM(CAST(new_deaths AS INT)) AS total_deaths, SUM(CAST(new_deaths AS INT))/SUM(new_cases)*100 AS death_percentage
 FROM PortfolioProject..CovidDeaths
@@ -130,7 +130,7 @@ ORDER BY 1,2;
 
 
 
---Table 2
+-- Table 2
 
 SELECT location, SUM(CAST(new_deaths AS INT)) AS total_death_count
 FROM PortfolioProject..CovidDeaths
@@ -142,7 +142,7 @@ ORDER BY total_death_count DESC;
 
 
 
---Table 3
+-- Table 3
 
 SELECT date, location, population, MAX(total_cases) AS highest_infection_count, MAX(total_cases/population)*100 AS percentage_infected_population
 FROM PortfolioProject..CovidDeaths
@@ -152,7 +152,7 @@ ORDER BY percentage_infected_population DESC;
 
 
 
---Total vaccinations per continent
+-- Total vaccinations per continent
 
 SELECT continent, SUM(CAST(people_fully_vaccinated AS BIGINT)) AS total_vaccinations
 FROM PortfolioProject..CovidVaccinations

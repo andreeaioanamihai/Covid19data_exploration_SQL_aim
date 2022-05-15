@@ -186,7 +186,7 @@ JOIN PortfolioProject..CovidVaccinations AS vac
 --WHERE dea.continent IS NOT NULL
 --ORDER BY 2,3;
 
-SELECT *, (rolling_people_vaccinated/population)*100
+SELECT *, (rolling_people_vaccinated/population)*100 AS percent_people_vaccinated
 FROM #PercentPopulationVaccinated;
 
 
